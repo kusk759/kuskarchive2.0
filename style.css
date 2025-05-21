@@ -1,0 +1,57 @@
+body {
+	font-family: 'Arial', sans-serif; /* Шрифт */
+	background-color: #e0e5f0; /* Цвет боковой панелт */
+	margin: 0; /* Заполняет отступы */
+}
+/* header - Шапка сайта */
+.header {
+	display: flex; /* Перетаскивает текст на вверх */
+	background: linear-gradient(to right, #0a246a, #3a6ea5, #b6d0e2); /* Цвет градиент шапки */
+	color: white; /* Цвет текста */
+	align-items: center; /* Ровняет обьекты */
+	font-size; 24px;
+}
+/* container - ниже шапки полотно */
+.container {
+	display: flex;
+}
+/* .sidebar - левая боковая панель */
+.sidebar {
+	padding-left: 20px; /* Отступ от левой части сайта */
+	width: 250px; /* Ширина боковой панели */
+}
+/* .content - Сам контент */
+.content {
+	padding-bottom: 20px; /* Увиличивает страницу вниз */
+	padding-left: 20px; /* Отступ от боковой панели */
+	background-color: white; /* Цвет */
+	flex-grow: 1;
+}
+
+/* .icon - Иконки боковой панели */
+.icon {
+	width: 50px;
+	height: 50px;
+	vertical-aling: middle;
+	margin-right: 10px;
+}
+/* sidebar ul - Честно сам не ебу как я это сделал, но если убрать ломаются размеры */
+.sidebar ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+/* .iconhead - Иконка шапки */
+.iconhead {
+	padding-left: 20px;
+	width: 65px;
+	height: 65px;
+	margin-right: 10px;
+}
+.img {
+	width: 250px;
+	height: 250px;
+}
+.textc {
+	padding-left: 20px;
+	width: 700px;
+}
