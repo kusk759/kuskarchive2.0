@@ -1,0 +1,20 @@
+{
+  "name": "live-wallpaper",
+  "version": "1.0.0",
+  "description": "Interactive 3D character live wallpaper",
+  "main": "main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^6.0.0",
+    "@babylonjs/loaders": "^6.0.0"
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest"
+  }
+}
