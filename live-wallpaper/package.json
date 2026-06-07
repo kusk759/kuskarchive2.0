@@ -4,17 +4,58 @@
   "description": "Interactive 3D character live wallpaper",
   "main": "main.js",
   "homepage": "./",
+  "author": "kusk759",
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "build-win": "electron-builder --win"
   },
   "dependencies": {
-    "@babylonjs/core": "^6.0.0",
-    "@babylonjs/loaders": "^6.0.0"
+    "electron-squirrel-startup": "^1.1.1"
   },
   "devDependencies": {
     "electron": "^latest",
-    "electron-builder": "^latest"
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.livewallpaper.app",
+    "productName": "Live Wallpaper",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "certificateFile": null,
+      "certificatePassword": null,
+      "signingHashAlgorithms": [
+        "sha256"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Live Wallpaper"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}.exe"
+    }
   }
 }
