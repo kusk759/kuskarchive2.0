@@ -1,0 +1,63 @@
+name: Build EXE
+
+on:
+  push:
+    branches:
+      - live-wallpaper-app
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./live-wallpaper
+        run: npm install
+
+      - name: Build EXE
+        working-directory: ./live-wallpaper
+        run: npm run build-win
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Live-Wallpaper-EXE
+          path: live-wallpaper/dist/*.exe
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0-${{ github.run_number }}
+          release_name: Live Wallpaper v1.0.0
+          body: |
+            🎉 Готовый EXE файл Live Wallpaper!
+            
+            Просто запусти Live Wallpaper-1.0.0.exe
+            
+            Функции:
+            ✨ 3D персонаж с интерактивностью
+            🖱️ Клик для деформации
+            👉 Перетащка для вытягивания
+            🔄 Вращение камеры
+            💡 Управление светом и размером
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./live-wallpaper/dist/Live Wallpaper-1.0.0.exe
+          asset_name: Live-Wallpaper-portable.exe
+          asset_content_type: application/octet-stream
